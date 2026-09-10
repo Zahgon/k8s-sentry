@@ -1,0 +1,2087 @@
+{
+"event_types": [
+"Normal",
+"Warning",
+"Error",
+"Unknown",
+"",
+"warning",
+"error",
+"normal",
+"NORMAL",
+"Info",
+"Failed",
+"  ",
+"Warning ",
+"Erro",
+"Errorr"
+],
+"env_pairs": [
+[
+"",
+""
+],
+[
+"api",
+""
+],
+[
+"",
+"4138"
+],
+[
+"api",
+"4138"
+],
+[
+"api.cluster.local",
+"443"
+],
+[
+" ",
+" "
+],
+[
+"0",
+"0"
+]
+],
+"metas": [
+{
+"name": "",
+"namespace": "",
+"uid": "",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+{
+"name": "",
+"namespace": "default",
+"uid": "abc-123",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+{
+"name": "my-pod",
+"namespace": "prod",
+"uid": "uid-1",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+{
+"name": "",
+"namespace": "prod",
+"uid": "uid-2",
+"cluster_name": "",
+"labels": null,
+"owners": [
+{
+"api_version": "apps/v1",
+"kind": "ReplicaSet",
+"name": "rs-1",
+"controller": true
+}
+],
+"created": ""
+},
+{
+"name": "",
+"namespace": "prod",
+"uid": "uid-3",
+"cluster_name": "",
+"labels": null,
+"owners": [
+{
+"api_version": "apps/v1",
+"kind": "ReplicaSet",
+"name": "rs-2",
+"controller": false
+}
+],
+"created": ""
+},
+{
+"name": "",
+"namespace": "prod",
+"uid": "uid-4",
+"cluster_name": "",
+"labels": null,
+"owners": [
+{
+"api_version": "apps/v1",
+"kind": "ReplicaSet",
+"name": "rs-3",
+"controller": null
+}
+],
+"created": ""
+},
+{
+"name": "",
+"namespace": "prod",
+"uid": "uid-5",
+"cluster_name": "",
+"labels": null,
+"owners": [
+{
+"api_version": "v1",
+"kind": "Node",
+"name": "n1",
+"controller": false
+},
+{
+"api_version": "apps/v1",
+"kind": "Deployment",
+"name": "d1",
+"controller": true
+},
+{
+"api_version": "batch/v1",
+"kind": "Job",
+"name": "j1",
+"controller": true
+}
+],
+"created": ""
+},
+{
+"name": "",
+"namespace": "ns",
+"uid": "uid-6",
+"cluster_name": "",
+"labels": {
+"app": "web"
+},
+"owners": [],
+"created": ""
+},
+{
+"name": "",
+"namespace": "ns",
+"uid": "uid-7",
+"cluster_name": "",
+"labels": {
+"app": "web",
+"tier": "front"
+},
+"owners": [],
+"created": ""
+},
+{
+"name": "",
+"namespace": "",
+"uid": "only-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+{
+"name": "",
+"namespace": "ns-only",
+"uid": "",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+{
+"name": "",
+"namespace": "ns",
+"uid": "uid-8",
+"cluster_name": "c1",
+"labels": null,
+"owners": [],
+"created": ""
+}
+],
+"events": [
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Error",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Normal",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Unknown",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "Binding",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 0,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 42,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "prod-cluster",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "apps/v1",
+"kind": "Pod",
+"namespace": "d",
+"name": "p",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Node",
+"namespace": "",
+"name": "node-1",
+"field_path": "spec.containers{web}",
+"resource_version": "99"
+}
+},
+{
+"meta": {
+"name": "evt2",
+"namespace": "kube-system",
+"uid": "u2",
+"cluster_name": "",
+"labels": {
+"k": "v"
+},
+"owners": [],
+"created": "2020-01-01T00:00:00Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt3",
+"namespace": "ns",
+"uid": "u3",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "quoted \"msg\" and <html> & more",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "evt",
+"namespace": "default",
+"uid": "evt-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "2020-10-05T11:39:18.123456789Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "unicode héllo → 日本語",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "z1",
+"namespace": "ns",
+"uid": "z1",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "0001-01-01T00:00:00Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "z2",
+"namespace": "ns",
+"uid": "z2",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "0001-01-01T00:00:00.000000001Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "z3",
+"namespace": "ns",
+"uid": "z3",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "0001-01-01T00:00:00-01:00"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "z4",
+"namespace": "ns",
+"uid": "z4",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "0001-01-01T01:00:00+01:00"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+},
+{
+"meta": {
+"name": "z5",
+"namespace": "ns",
+"uid": "z5",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": "0001-01-01T00:00:00.000001Z"
+},
+"type": "Warning",
+"reason": "BackOff",
+"message": "Back-off restarting failed container",
+"action": "",
+"count": 1,
+"component": "kubelet",
+"cluster_name": "",
+"involved_object": {
+"api_version": "v1",
+"kind": "Deployment",
+"namespace": "default",
+"name": "web",
+"field_path": "",
+"resource_version": ""
+}
+}
+],
+"pods": [
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Failed",
+"status_message": "boom",
+"status_reason": "Evicted",
+"node_name": "node-1",
+"containers": []
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Failed",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": []
+},
+{
+"meta": {
+"name": "p2",
+"namespace": "prod",
+"uid": "u2",
+"cluster_name": "c1",
+"labels": {
+"app": "web"
+},
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Failed",
+"status_message": "oom",
+"status_reason": "OOMKilled",
+"node_name": "node-1",
+"containers": []
+},
+{
+"meta": {
+"name": "p3",
+"namespace": "prod",
+"uid": "u3",
+"cluster_name": "",
+"labels": null,
+"owners": [
+{
+"api_version": "apps/v1",
+"kind": "ReplicaSet",
+"name": "rs",
+"controller": true
+}
+],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Failed",
+"status_message": "m",
+"status_reason": "r",
+"node_name": "node-1",
+"containers": []
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Failed",
+"status_message": "m",
+"status_reason": "r",
+"node_name": "",
+"containers": []
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": false,
+"exit_code": 0,
+"reason": "",
+"message": "",
+"finished_ago_ms": 0,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Succeeded",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": false,
+"exit_code": 0,
+"reason": "",
+"message": "",
+"finished_ago_ms": 0,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 0,
+"reason": "",
+"message": "",
+"finished_ago_ms": 0,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 3,
+"terminated": true,
+"exit_code": 137,
+"reason": "OOMKilled",
+"message": "",
+"finished_ago_ms": 0,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 1,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "crash",
+"finished_ago_ms": 0,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "init",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 2,
+"reason": "Error",
+"message": "init failed",
+"finished_ago_ms": 0,
+"init": true
+},
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 3,
+"reason": "Error",
+"message": "web failed",
+"finished_ago_ms": 0,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 5000,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "p9",
+"namespace": "ns",
+"uid": "u9",
+"cluster_name": "",
+"labels": {
+"a": "b",
+"c": "d"
+},
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 9,
+"reason": "Error",
+"message": "msg",
+"finished_ago_ms": 0,
+"init": false
+}
+]
+}
+],
+"sentry_raw": [
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "m",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "m",
+"level": "error",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "m",
+"level": "warning",
+"logger": "kubernetes",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "prod",
+"server_name": "node-1",
+"release": "img:1",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": [
+"a",
+"b"
+],
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": [],
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": [
+""
+],
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": {
+"reason": "OOMKilled"
+},
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": {
+"b": "2",
+"a": "1",
+"c": "3"
+},
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": {
+"exit-code": "137"
+},
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": {
+"restartCount": 3
+},
+"timestamp": ""
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": {
+"x": "1"
+},
+"extra_int": {
+"y": 2
+},
+"timestamp": ""
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": "2020-10-05T11:39:18.123456789Z"
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": "2020-10-05T11:39:18Z"
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": "2020-10-05T13:39:18+02:00"
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": "0001-01-01T00:00:00Z"
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": "0001-01-01T00:00:00.000000001Z"
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": "0001-01-01T00:00:00-01:00"
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": "0001-01-01T01:00:00+01:00"
+},
+{
+"message": "",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": "0001-01-01T00:00:00.000001Z"
+},
+{
+"message": "quoted \"x\" <html> & amp",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "héllo → 日本語",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+},
+{
+"message": "new\nline\ttab",
+"level": "",
+"logger": "",
+"environment": "",
+"server_name": "",
+"release": "",
+"fingerprint": null,
+"tags": null,
+"extra_str": null,
+"extra_int": null,
+"timestamp": ""
+}
+],
+"pod_seqs": [
+[
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+}
+],
+[
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 500,
+"init": false
+}
+]
+}
+],
+[
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 500,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+}
+],
+[
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 3,
+"terminated": true,
+"exit_code": 137,
+"reason": "OOMKilled",
+"message": "",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 3,
+"terminated": true,
+"exit_code": 137,
+"reason": "OOMKilled",
+"message": "",
+"finished_ago_ms": 500,
+"init": false
+}
+]
+}
+],
+[
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "init",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 2,
+"reason": "Error",
+"message": "init boom",
+"finished_ago_ms": 1000,
+"init": true
+},
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 3,
+"reason": "Error",
+"message": "web boom",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "init",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 2,
+"reason": "Error",
+"message": "init boom",
+"finished_ago_ms": 500,
+"init": true
+},
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 3,
+"reason": "Error",
+"message": "web boom",
+"finished_ago_ms": 500,
+"init": false
+}
+]
+}
+],
+[
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 0,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 0,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 500,
+"init": false
+}
+]
+}
+],
+[
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": -1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": -1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 500,
+"init": false
+}
+]
+}
+],
+[
+{
+"meta": {
+"name": "p",
+"namespace": "ns",
+"uid": "u",
+"cluster_name": "",
+"labels": {
+"reason": "LABEL",
+"namespace": "LBLNS",
+"kind": "LBLKIND"
+},
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "p",
+"namespace": "ns",
+"uid": "u",
+"cluster_name": "",
+"labels": {
+"reason": "LABEL",
+"namespace": "LBLNS",
+"kind": "LBLKIND"
+},
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 500,
+"init": false
+}
+]
+}
+],
+[
+{
+"meta": {
+"name": "p",
+"namespace": "ns",
+"uid": "u",
+"cluster_name": "c1",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "p",
+"namespace": "ns",
+"uid": "u",
+"cluster_name": "c1",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Error",
+"message": "",
+"finished_ago_ms": 500,
+"init": false
+}
+]
+}
+],
+[
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Er\tror",
+"message": "héllo → <b>&",
+"finished_ago_ms": 1000,
+"init": false
+}
+]
+},
+{
+"meta": {
+"name": "web-1",
+"namespace": "default",
+"uid": "pod-uid",
+"cluster_name": "",
+"labels": null,
+"owners": [],
+"created": ""
+},
+"kind": "Pod",
+"phase": "Running",
+"status_message": "",
+"status_reason": "",
+"node_name": "node-1",
+"containers": [
+{
+"name": "web",
+"image": "nginx:1.0",
+"restart_count": 0,
+"terminated": true,
+"exit_code": 1,
+"reason": "Er\tror",
+"message": "héllo → <b>&",
+"finished_ago_ms": 500,
+"init": false
+}
+]
+}
+]
+]
+}

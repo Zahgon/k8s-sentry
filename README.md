@@ -1,60 +1,99 @@
-# k8s-sentry
+# k8ssentry
 
-_k8s-sentry_ is a simple tool to monitor a [Kubernetes](https://kubernetes.io) cluster and report all operational issues to [Sentry](http://sentry.io).
+A Python port of [`github.com/wichert/k8s-sentry`](https://github.com/wichert/k8s-sentry)
+(`8109a1e`) — watches Kubernetes pods and events and reports failures to Sentry.
 
-![Screenshot](docs/screenshot.png)
+The port targets **behavioural equivalence with the Go program**, not idiomatic
+redesign. Names, signatures and the emitted Sentry payload follow the Go
+original, including its quirks.
 
-There are two alternatives implementations:
+## Install
 
-- [getsentry/sentry-kubernetes](https://github.com/getsentry/sentry-kubernetes): The official Sentry kubernetes reporter. This is not actively maintained and suffers from a [major memory leak](https://github.com/getsentry/sentry-kubernetes/issues/7).
-- [stevelacy/go-sentry-kubernetes](https://github.com/stevelacy/go-sentry-kubernetes): An alternative go implementation. This watches for Pod status changes only. This causes it to several event types (missing volumes, ingress errors, etc.).
-
-_k8s-sentry_ watches for several things:
-
-- All warning and error events
-- Pod containers terminating with a non-zero exit code
-- Pods failing completely
-
-## Deployment
-
-See [deploy](deploy/) for Kubernetes manifests and installation instructions.
-
-## Configuration
-
-Configuration is done completely via environment variables.
-
-| Variable | Description |
-| -- | -- |
-| `SENTRY_DSN` | **Required** DSN for a Sentry project. |
-| `SENTRY_ENVIRONMENT` | Environment for Sentry issues. If not set the namespace is used as environment. |
-| `NAMESPACE` | Comma separated set of namespaces to minitor. If not set all namespaces are monitored (as far as permissions allow) |
-
-## Issue grouping
-
-_k8s-sentry_ tries to be smart about grouping issues. To handle that several strategies are used:
-
-- all issues use the event type, event reason and event message as part of the fingerprint
-- events related to controlled Pods (for example Pods created through a ReplicaSet (which is
-  automatically done if you use a StatefulSet or Deployment) are grouped by the ReplicateSet.
-- other events are grouped by the the involved object
-
-## Building
-
-This project uses [Go modules](https://github.com/golang/go/wiki/Modules) and requires Go 1.13 or later. From a git checkout you can build the binary using `go build`:
-
-```shell
-$ go build
-go: downloading k8s.io/apimachinery v0.0.0-20191020214737-6c8691705fc5
-go: downloading k8s.io/client-go v0.0.0-20191016111102-bec269661e48
-go: downloading k8s.io/api v0.0.0-20191016110408-35e52d86657a
-...
+```sh
+pip install -e ".[dev]"           # core + test tooling, zero runtime deps
+pip install -e ".[cluster,dev]"   # adds the Kubernetes and Sentry clients
 ```
 
-You can then run `k8s-sentry` directly (assuming you have a valid kubectl configuration):
+The transformation — Kubernetes object in, Sentry payload out — has **zero
+runtime dependencies**. The cluster and Sentry clients are optional extras used
+only by the I/O adapter. Python 3.9+.
 
-```shell
-$ ./k8s-sentry
-2019/10/22 15:55:41 Warning: DSN environment variable not set. Can not report to Sentry
-2019/10/22 15:55:41 Warning HorizontalPodAutoscaler/istio-ingressgateway: unable to get metrics for resource cpu: no metrics returned from resource metrics API
-2019/10/22 15:55:41 Warning HorizontalPodAutoscaler/istio-pilot: unable to get metrics for resource cpu: no metrics returned from resource metrics API
+## Use
+
+```sh
+SENTRY_DSN=https://... NAMESPACE=default k8s-sentry
 ```
+
+| Variable | Meaning |
+| --- | --- |
+| `SENTRY_DSN` | Sentry endpoint; a warning is logged when unset |
+| `SENTRY_ENVIRONMENT` | Environment tag; falls back to the object's namespace |
+| `ENVIRONMENT` | Deprecated alias, warns when used |
+| `NAMESPACE` | Comma-separated list; unset means every namespace |
+| `--kubeconfig` | Config file; defaults to `~/.kube/config` outside a cluster |
+
+Using it as a library:
+
+```python
+from k8ssentry import application, k8s
+
+app = application(defaultEnvironment="prod", hub=my_hub)
+app.handleEventAdd(some_event)     # builds and captures the Sentry payload
+```
+
+## Equivalence
+
+`verification/` holds the proof, not just tests.
+
+* `go-probe.go.txt` runs **inside the real Go package** (it needs `skipEvent`,
+  `fingerprintFromMeta`, the handlers and the event construction, none of which
+  are exported). `gen-go-truth.sh` copies it into a throwaway copy of the Go
+  checkout, records `go-truth.json`, deletes it, and fails if `git status` in the
+  checkout changes.
+* `truth_inputs.py` generates the shared corpus; both sides replay the identical
+  file so they cannot drift.
+* `tests/test_differential.py` requires **zero** divergences.
+
+Covered: `skipEvent`, `getSentryLevel`, `inCluster`, `fingerprintFromMeta`, both
+`EventHandler` implementations, and the **complete Sentry payload** built from a
+`v1.Event` and from a `v1.Pod`, byte-for-byte.
+
+```sh
+make check      # compile + lint + typecheck + test
+make truth      # re-record from the real Go program (needs Go on PATH)
+```
+
+## Behaviours deliberately preserved
+
+These look like bugs. They are what the Go program does, so the port does them
+too — each is pinned by a test.
+
+| Behaviour | Why |
+| --- | --- |
+| `Tags()` can be `None`, not `{}` | `GetLabels()` hands back Go's **nil map**, which marshals to `null`. Ranging over it is legal in Go and yields nothing. |
+| `timestamp` is the **last** key in the payload | sentry-go's custom `MarshalJSON` shadows it in an outer wrapper. |
+| `sdk` and `user` always appear | `omitempty` never omits a struct, so a bare event is `{"sdk":{},"user":{}}`. |
+| Only exact `Warning` / `Error` map to a level | `getSentryLevel` compares literally, so `warning` (lower case) prints a notice and falls back to `info`. |
+| Only the **first** failed container is reported | The scan `break`s, and init containers are scanned before regular ones. |
+| A termination older than 5ms is ignored | `isNewTermination` treats anything older as a stale record from an unrelated pod update. |
+| The **first** termination of a container is never reported | `Get` runs before `Add`, so the cache is empty on first sight and Go's `cachedTime.(metav1.Time)` assertion fails, returning false. Only a *later* termination with a newer `FinishedAt` is reported. Verified against Go: first `false`, same-time repeat `false`, newer `true`. |
+| The cache is written **before** the age check | So a stale record still refreshes the entry. |
+
+## Known differences
+
+* **The I/O edge is not byte-exact.** Informer wiring, kubeconfig discovery and
+  Sentry delivery cannot have a Go oracle recorded without a live cluster, so
+  `transport.py` and `main.py` are a documented adapter rather than a proven
+  port. `verification/SCOPE.md` states this explicitly.
+* **Pod-involved events are not exercisable end to end.** `NewPodEventHandler`
+  fetches the Pod through the API, and the Go code types the field as the
+  concrete `*kubernetes.Clientset` rather than an interface, so it cannot be
+  faked on either side. `PodEventHandler.Fingerprint()`/`Tags()` are proven
+  directly instead, and the registry fall-through is unit-tested.
+* **SDK enrichment is out of scope.** `sentry.CaptureEvent` decorates events with
+  the host's architecture, CPU count, hostname and the entire Go module list.
+  None of that is computed by this program, and it is excluded from the oracle.
+
+## Licence
+
+Apache-2.0, as upstream — see `LICENSE`. Copyright 2019 Wichert Akkerman.

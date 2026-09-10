@@ -1,0 +1,4098 @@
+[
+ {
+  "kind": "eventtype",
+  "in": "Normal",
+  "out": [
+   true,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "Warning",
+  "out": [
+   false,
+   "warning"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "Error",
+  "out": [
+   false,
+   "error"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "Unknown",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "warning",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "error",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "normal",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "NORMAL",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "Info",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "Failed",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "  ",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "Warning ",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "Erro",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventtype",
+  "in": "Errorr",
+  "out": [
+   false,
+   "info"
+  ],
+  "err": null
+ },
+ {
+  "kind": "incluster",
+  "in": [
+   "",
+   ""
+  ],
+  "out": false,
+  "err": null
+ },
+ {
+  "kind": "incluster",
+  "in": [
+   "api",
+   ""
+  ],
+  "out": false,
+  "err": null
+ },
+ {
+  "kind": "incluster",
+  "in": [
+   "",
+   "4138"
+  ],
+  "out": false,
+  "err": null
+ },
+ {
+  "kind": "incluster",
+  "in": [
+   "api",
+   "4138"
+  ],
+  "out": true,
+  "err": null
+ },
+ {
+  "kind": "incluster",
+  "in": [
+   "api.cluster.local",
+   "443"
+  ],
+  "out": true,
+  "err": null
+ },
+ {
+  "kind": "incluster",
+  "in": [
+   " ",
+   " "
+  ],
+  "out": true,
+  "err": null
+ },
+ {
+  "kind": "incluster",
+  "in": [
+   "0",
+   "0"
+  ],
+  "out": true,
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "",
+   "uid": "",
+   "cluster_name": "",
+   "labels": null,
+   "owners": [],
+   "created": ""
+  },
+  "out": [
+   "",
+   ""
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "default",
+   "uid": "abc-123",
+   "cluster_name": "",
+   "labels": null,
+   "owners": [],
+   "created": ""
+  },
+  "out": [
+   "default",
+   "abc-123"
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "my-pod",
+   "namespace": "prod",
+   "uid": "uid-1",
+   "cluster_name": "",
+   "labels": null,
+   "owners": [],
+   "created": ""
+  },
+  "out": [
+   "prod",
+   "uid-1"
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "prod",
+   "uid": "uid-2",
+   "cluster_name": "",
+   "labels": null,
+   "owners": [
+    {
+     "api_version": "apps/v1",
+     "kind": "ReplicaSet",
+     "name": "rs-1",
+     "controller": true
+    }
+   ],
+   "created": ""
+  },
+  "out": [
+   "apps/v1",
+   "ReplicaSet",
+   "rs-1"
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "prod",
+   "uid": "uid-3",
+   "cluster_name": "",
+   "labels": null,
+   "owners": [
+    {
+     "api_version": "apps/v1",
+     "kind": "ReplicaSet",
+     "name": "rs-2",
+     "controller": false
+    }
+   ],
+   "created": ""
+  },
+  "out": [
+   "prod",
+   "uid-3"
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "prod",
+   "uid": "uid-4",
+   "cluster_name": "",
+   "labels": null,
+   "owners": [
+    {
+     "api_version": "apps/v1",
+     "kind": "ReplicaSet",
+     "name": "rs-3",
+     "controller": null
+    }
+   ],
+   "created": ""
+  },
+  "out": [
+   "prod",
+   "uid-4"
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "prod",
+   "uid": "uid-5",
+   "cluster_name": "",
+   "labels": null,
+   "owners": [
+    {
+     "api_version": "v1",
+     "kind": "Node",
+     "name": "n1",
+     "controller": false
+    },
+    {
+     "api_version": "apps/v1",
+     "kind": "Deployment",
+     "name": "d1",
+     "controller": true
+    },
+    {
+     "api_version": "batch/v1",
+     "kind": "Job",
+     "name": "j1",
+     "controller": true
+    }
+   ],
+   "created": ""
+  },
+  "out": [
+   "apps/v1",
+   "Deployment",
+   "d1"
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "ns",
+   "uid": "uid-6",
+   "cluster_name": "",
+   "labels": {
+    "app": "web"
+   },
+   "owners": [],
+   "created": ""
+  },
+  "out": [
+   "ns",
+   "uid-6"
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "ns",
+   "uid": "uid-7",
+   "cluster_name": "",
+   "labels": {
+    "app": "web",
+    "tier": "front"
+   },
+   "owners": [],
+   "created": ""
+  },
+  "out": [
+   "ns",
+   "uid-7"
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "",
+   "uid": "only-uid",
+   "cluster_name": "",
+   "labels": null,
+   "owners": [],
+   "created": ""
+  },
+  "out": [
+   "",
+   "only-uid"
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "ns-only",
+   "uid": "",
+   "cluster_name": "",
+   "labels": null,
+   "owners": [],
+   "created": ""
+  },
+  "out": [
+   "ns-only",
+   ""
+  ],
+  "err": null
+ },
+ {
+  "kind": "fingerprintmeta",
+  "in": {
+   "name": "",
+   "namespace": "ns",
+   "uid": "uid-8",
+   "cluster_name": "c1",
+   "labels": null,
+   "owners": [],
+   "created": ""
+  },
+  "out": [
+   "ns",
+   "uid-8"
+  ],
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Error",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Error",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Error\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"error\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Error\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Normal",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Normal",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": null,
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Unknown",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Unknown",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Unknown\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"info\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Unknown\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "Binding",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "Binding",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"action\":\"Binding\",\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 0,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 0,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":0},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 42,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 42,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":42},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "prod-cluster",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "prod-cluster",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"cluster\":\"prod-cluster\",\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: \",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "apps/v1",
+    "kind": "Pod",
+    "namespace": "d",
+    "name": "p",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "apps/v1",
+    "Pod",
+    "d",
+    "p",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "apps/v1",
+    "kind": "Pod",
+    "namespace": "d",
+    "name": "p",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"d\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"apps/v1\",\"Pod\",\"d\",\"p\",\"\"],\"level\":\"warning\",\"message\":\"Pod/p: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Pod\",\"namespace\":\"d\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Node",
+    "namespace": "",
+    "name": "node-1",
+    "field_path": "spec.containers{web}",
+    "resource_version": "99"
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Node",
+    "",
+    "node-1",
+    "spec.containers{web}"
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Node",
+    "namespace": "",
+    "name": "node-1",
+    "field_path": "spec.containers{web}",
+    "resource_version": "99"
+   }
+  },
+  "out": "{\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Node\",\"\",\"node-1\",\"spec.containers{web}\"],\"level\":\"warning\",\"message\":\"Node/node-1: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Node\",\"namespace\":\"\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt2",
+    "namespace": "kube-system",
+    "uid": "u2",
+    "cluster_name": "",
+    "labels": {
+     "k": "v"
+    },
+    "owners": [],
+    "created": "2020-01-01T00:00:00Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   {
+    "k": "v"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt2",
+    "namespace": "kube-system",
+    "uid": "u2",
+    "cluster_name": "",
+    "labels": {
+     "k": "v"
+    },
+    "owners": [],
+    "created": "2020-01-01T00:00:00Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"k\":\"v\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-01-01T00:00:00Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt3",
+    "namespace": "ns",
+    "uid": "u3",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt3",
+    "namespace": "ns",
+    "uid": "u3",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "quoted \"msg\" and <html> & more",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "quoted \"msg\" and <html> & more",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"quoted \\\"msg\\\" and \\u003chtml\\u003e \\u0026 more\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: quoted \\\"msg\\\" and \\u003chtml\\u003e \\u0026 more\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "unicode héllo → 日本語",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "evt",
+    "namespace": "default",
+    "uid": "evt-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "2020-10-05T11:39:18.123456789Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "unicode héllo → 日本語",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"unicode héllo → 日本語\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: unicode héllo → 日本語\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "z1",
+    "namespace": "ns",
+    "uid": "z1",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "0001-01-01T00:00:00Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "z1",
+    "namespace": "ns",
+    "uid": "z1",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "0001-01-01T00:00:00Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "z2",
+    "namespace": "ns",
+    "uid": "z2",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "0001-01-01T00:00:00.000000001Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "z2",
+    "namespace": "ns",
+    "uid": "z2",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "0001-01-01T00:00:00.000000001Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"0001-01-01T00:00:00.000000001Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "z3",
+    "namespace": "ns",
+    "uid": "z3",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "0001-01-01T00:00:00-01:00"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "z3",
+    "namespace": "ns",
+    "uid": "z3",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "0001-01-01T00:00:00-01:00"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"0001-01-01T01:00:00Z\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "z4",
+    "namespace": "ns",
+    "uid": "z4",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "0001-01-01T01:00:00+01:00"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "z4",
+    "namespace": "ns",
+    "uid": "z4",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "0001-01-01T01:00:00+01:00"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}",
+  "err": null
+ },
+ {
+  "kind": "defaulthandler",
+  "in": {
+   "meta": {
+    "name": "z5",
+    "namespace": "ns",
+    "uid": "z5",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "0001-01-01T00:00:00.000001Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": [
+   [
+    "v1",
+    "Deployment",
+    "default",
+    "web",
+    ""
+   ],
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "eventadd",
+  "in": {
+   "meta": {
+    "name": "z5",
+    "namespace": "ns",
+    "uid": "z5",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": "0001-01-01T00:00:00.000001Z"
+   },
+   "type": "Warning",
+   "reason": "BackOff",
+   "message": "Back-off restarting failed container",
+   "action": "",
+   "count": 1,
+   "component": "kubelet",
+   "cluster_name": "",
+   "involved_object": {
+    "api_version": "v1",
+    "kind": "Deployment",
+    "namespace": "default",
+    "name": "web",
+    "field_path": "",
+    "resource_version": ""
+   }
+  },
+  "out": "{\"environment\":\"default\",\"extra\":{\"count\":1},\"fingerprint\":[\"kubelet\",\"Warning\",\"BackOff\",\"Back-off restarting failed container\",\"v1\",\"Deployment\",\"default\",\"web\",\"\"],\"level\":\"warning\",\"message\":\"Deployment/web: Back-off restarting failed container\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"component\":\"kubelet\",\"kind\":\"Deployment\",\"namespace\":\"default\",\"reason\":\"BackOff\",\"type\":\"Warning\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"0001-01-01T00:00:00.000001Z\"}",
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Failed",
+   "status_message": "boom",
+   "status_reason": "Evicted",
+   "node_name": "node-1",
+   "containers": []
+  },
+  "out": [
+   [
+    "default",
+    "pod-uid"
+   ],
+   {
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Failed",
+   "status_message": "boom",
+   "status_reason": "Evicted",
+   "node_name": "node-1",
+   "containers": []
+  },
+  "out": "{\"environment\":\"default\",\"fingerprint\":[\"Evicted\",\"boom\",\"default\",\"pod-uid\"],\"level\":\"error\",\"message\":\"Pod/web-1: boom\",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"kind\":\"Pod\",\"namespace\":\"default\",\"reason\":\"Evicted\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}",
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Failed",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": []
+  },
+  "out": [
+   [
+    "default",
+    "pod-uid"
+   ],
+   {
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Failed",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": []
+  },
+  "out": "{\"environment\":\"default\",\"fingerprint\":[\"\",\"\",\"default\",\"pod-uid\"],\"level\":\"error\",\"message\":\"Pod/web-1: \",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"kind\":\"Pod\",\"namespace\":\"default\",\"reason\":\"\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}",
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "p2",
+    "namespace": "prod",
+    "uid": "u2",
+    "cluster_name": "c1",
+    "labels": {
+     "app": "web"
+    },
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Failed",
+   "status_message": "oom",
+   "status_reason": "OOMKilled",
+   "node_name": "node-1",
+   "containers": []
+  },
+  "out": [
+   [
+    "prod",
+    "u2"
+   ],
+   {
+    "app": "web",
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "p2",
+    "namespace": "prod",
+    "uid": "u2",
+    "cluster_name": "c1",
+    "labels": {
+     "app": "web"
+    },
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Failed",
+   "status_message": "oom",
+   "status_reason": "OOMKilled",
+   "node_name": "node-1",
+   "containers": []
+  },
+  "out": "{\"environment\":\"prod\",\"fingerprint\":[\"OOMKilled\",\"oom\",\"prod\",\"u2\"],\"level\":\"error\",\"message\":\"Pod/p2: oom\",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"app\":\"web\",\"cluster\":\"c1\",\"kind\":\"Pod\",\"namespace\":\"prod\",\"reason\":\"OOMKilled\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}",
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "p3",
+    "namespace": "prod",
+    "uid": "u3",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [
+     {
+      "api_version": "apps/v1",
+      "kind": "ReplicaSet",
+      "name": "rs",
+      "controller": true
+     }
+    ],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Failed",
+   "status_message": "m",
+   "status_reason": "r",
+   "node_name": "node-1",
+   "containers": []
+  },
+  "out": [
+   [
+    "apps/v1",
+    "ReplicaSet",
+    "rs"
+   ],
+   {
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "p3",
+    "namespace": "prod",
+    "uid": "u3",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [
+     {
+      "api_version": "apps/v1",
+      "kind": "ReplicaSet",
+      "name": "rs",
+      "controller": true
+     }
+    ],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Failed",
+   "status_message": "m",
+   "status_reason": "r",
+   "node_name": "node-1",
+   "containers": []
+  },
+  "out": "{\"environment\":\"prod\",\"fingerprint\":[\"r\",\"m\",\"apps/v1\",\"ReplicaSet\",\"rs\"],\"level\":\"error\",\"message\":\"Pod/p3: m\",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"kind\":\"Pod\",\"namespace\":\"prod\",\"reason\":\"r\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}",
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Failed",
+   "status_message": "m",
+   "status_reason": "r",
+   "node_name": "",
+   "containers": []
+  },
+  "out": [
+   [
+    "default",
+    "pod-uid"
+   ],
+   {
+    "nodeName": ""
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Failed",
+   "status_message": "m",
+   "status_reason": "r",
+   "node_name": "",
+   "containers": []
+  },
+  "out": "{\"environment\":\"default\",\"fingerprint\":[\"r\",\"m\",\"default\",\"pod-uid\"],\"level\":\"error\",\"message\":\"Pod/web-1: m\",\"sdk\":{},\"server_name\":\"probe-host\",\"tags\":{\"kind\":\"Pod\",\"namespace\":\"default\",\"reason\":\"r\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}",
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": false,
+     "exit_code": 0,
+     "reason": "",
+     "message": "",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": [
+   [
+    "default",
+    "pod-uid"
+   ],
+   {
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": false,
+     "exit_code": 0,
+     "reason": "",
+     "message": "",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": null,
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Succeeded",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": false,
+     "exit_code": 0,
+     "reason": "",
+     "message": "",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": [
+   [
+    "default",
+    "pod-uid"
+   ],
+   {
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Succeeded",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": false,
+     "exit_code": 0,
+     "reason": "",
+     "message": "",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": null,
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": true,
+     "exit_code": 0,
+     "reason": "",
+     "message": "",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": [
+   [
+    "default",
+    "pod-uid"
+   ],
+   {
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": true,
+     "exit_code": 0,
+     "reason": "",
+     "message": "",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": null,
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 3,
+     "terminated": true,
+     "exit_code": 137,
+     "reason": "OOMKilled",
+     "message": "",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": [
+   [
+    "default",
+    "pod-uid"
+   ],
+   {
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 3,
+     "terminated": true,
+     "exit_code": 137,
+     "reason": "OOMKilled",
+     "message": "",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": null,
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 1,
+     "terminated": true,
+     "exit_code": 1,
+     "reason": "Error",
+     "message": "crash",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": [
+   [
+    "default",
+    "pod-uid"
+   ],
+   {
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 1,
+     "terminated": true,
+     "exit_code": 1,
+     "reason": "Error",
+     "message": "crash",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": null,
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "init",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": true,
+     "exit_code": 2,
+     "reason": "Error",
+     "message": "init failed",
+     "finished_ago_ms": 0,
+     "init": true
+    },
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": true,
+     "exit_code": 3,
+     "reason": "Error",
+     "message": "web failed",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": [
+   [
+    "default",
+    "pod-uid"
+   ],
+   {
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "init",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": true,
+     "exit_code": 2,
+     "reason": "Error",
+     "message": "init failed",
+     "finished_ago_ms": 0,
+     "init": true
+    },
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": true,
+     "exit_code": 3,
+     "reason": "Error",
+     "message": "web failed",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": null,
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": true,
+     "exit_code": 1,
+     "reason": "Error",
+     "message": "",
+     "finished_ago_ms": 5000,
+     "init": false
+    }
+   ]
+  },
+  "out": [
+   [
+    "default",
+    "pod-uid"
+   ],
+   {
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "web-1",
+    "namespace": "default",
+    "uid": "pod-uid",
+    "cluster_name": "",
+    "labels": null,
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": true,
+     "exit_code": 1,
+     "reason": "Error",
+     "message": "",
+     "finished_ago_ms": 5000,
+     "init": false
+    }
+   ]
+  },
+  "out": null,
+  "err": null
+ },
+ {
+  "kind": "podhandler",
+  "in": {
+   "meta": {
+    "name": "p9",
+    "namespace": "ns",
+    "uid": "u9",
+    "cluster_name": "",
+    "labels": {
+     "a": "b",
+     "c": "d"
+    },
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": true,
+     "exit_code": 9,
+     "reason": "Error",
+     "message": "msg",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": [
+   [
+    "ns",
+    "u9"
+   ],
+   {
+    "a": "b",
+    "c": "d",
+    "nodeName": "node-1"
+   }
+  ],
+  "err": null
+ },
+ {
+  "kind": "podupdate",
+  "in": {
+   "meta": {
+    "name": "p9",
+    "namespace": "ns",
+    "uid": "u9",
+    "cluster_name": "",
+    "labels": {
+     "a": "b",
+     "c": "d"
+    },
+    "owners": [],
+    "created": ""
+   },
+   "kind": "Pod",
+   "phase": "Running",
+   "status_message": "",
+   "status_reason": "",
+   "node_name": "node-1",
+   "containers": [
+    {
+     "name": "web",
+     "image": "nginx:1.0",
+     "restart_count": 0,
+     "terminated": true,
+     "exit_code": 9,
+     "reason": "Error",
+     "message": "msg",
+     "finished_ago_ms": 0,
+     "init": false
+    }
+   ]
+  },
+  "out": null,
+  "err": null
+ },
+ {
+  "kind": "podseq",
+  "in": [
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   },
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   }
+  ],
+  "out": [
+   null,
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "podseq",
+  "in": [
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   },
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 500,
+      "init": false
+     }
+    ]
+   }
+  ],
+  "out": [
+   null,
+   "{\"environment\":\"default\",\"extra\":{\"exit-code\":\"1\",\"restartCount\":0},\"fingerprint\":[\"Error\",\"Error\",\"default\",\"pod-uid\"],\"level\":\"error\",\"message\":\"Pod/web-1: Error\",\"release\":\"nginx:1.0\",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"kind\":\"Pod\",\"namespace\":\"default\",\"reason\":\"Error\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}"
+  ],
+  "err": null
+ },
+ {
+  "kind": "podseq",
+  "in": [
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 500,
+      "init": false
+     }
+    ]
+   },
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   }
+  ],
+  "out": [
+   null,
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "podseq",
+  "in": [
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 3,
+      "terminated": true,
+      "exit_code": 137,
+      "reason": "OOMKilled",
+      "message": "",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   },
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 3,
+      "terminated": true,
+      "exit_code": 137,
+      "reason": "OOMKilled",
+      "message": "",
+      "finished_ago_ms": 500,
+      "init": false
+     }
+    ]
+   }
+  ],
+  "out": [
+   null,
+   "{\"environment\":\"default\",\"extra\":{\"exit-code\":\"137\",\"restartCount\":3},\"fingerprint\":[\"OOMKilled\",\"OOMKilled\",\"default\",\"pod-uid\"],\"level\":\"error\",\"message\":\"Pod/web-1: OOMKilled\",\"release\":\"nginx:1.0\",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"kind\":\"Pod\",\"namespace\":\"default\",\"reason\":\"OOMKilled\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}"
+  ],
+  "err": null
+ },
+ {
+  "kind": "podseq",
+  "in": [
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "init",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 2,
+      "reason": "Error",
+      "message": "init boom",
+      "finished_ago_ms": 1000,
+      "init": true
+     },
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 3,
+      "reason": "Error",
+      "message": "web boom",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   },
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "init",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 2,
+      "reason": "Error",
+      "message": "init boom",
+      "finished_ago_ms": 500,
+      "init": true
+     },
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 3,
+      "reason": "Error",
+      "message": "web boom",
+      "finished_ago_ms": 500,
+      "init": false
+     }
+    ]
+   }
+  ],
+  "out": [
+   null,
+   "{\"environment\":\"default\",\"extra\":{\"exit-code\":\"2\",\"restartCount\":0},\"fingerprint\":[\"Error\",\"init boom\",\"default\",\"pod-uid\"],\"level\":\"error\",\"message\":\"Pod/web-1: init boom\",\"release\":\"nginx:1.0\",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"kind\":\"Pod\",\"namespace\":\"default\",\"reason\":\"Error\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}"
+  ],
+  "err": null
+ },
+ {
+  "kind": "podseq",
+  "in": [
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 0,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   },
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 0,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 500,
+      "init": false
+     }
+    ]
+   }
+  ],
+  "out": [
+   null,
+   null
+  ],
+  "err": null
+ },
+ {
+  "kind": "podseq",
+  "in": [
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": -1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   },
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": -1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 500,
+      "init": false
+     }
+    ]
+   }
+  ],
+  "out": [
+   null,
+   "{\"environment\":\"default\",\"extra\":{\"exit-code\":\"-1\",\"restartCount\":0},\"fingerprint\":[\"Error\",\"Error\",\"default\",\"pod-uid\"],\"level\":\"error\",\"message\":\"Pod/web-1: Error\",\"release\":\"nginx:1.0\",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"kind\":\"Pod\",\"namespace\":\"default\",\"reason\":\"Error\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}"
+  ],
+  "err": null
+ },
+ {
+  "kind": "podseq",
+  "in": [
+   {
+    "meta": {
+     "name": "p",
+     "namespace": "ns",
+     "uid": "u",
+     "cluster_name": "",
+     "labels": {
+      "kind": "LBLKIND",
+      "namespace": "LBLNS",
+      "reason": "LABEL"
+     },
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   },
+   {
+    "meta": {
+     "name": "p",
+     "namespace": "ns",
+     "uid": "u",
+     "cluster_name": "",
+     "labels": {
+      "kind": "LBLKIND",
+      "namespace": "LBLNS",
+      "reason": "LABEL"
+     },
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 500,
+      "init": false
+     }
+    ]
+   }
+  ],
+  "out": [
+   null,
+   "{\"environment\":\"ns\",\"extra\":{\"exit-code\":\"1\",\"restartCount\":0},\"fingerprint\":[\"Error\",\"Error\",\"ns\",\"u\"],\"level\":\"error\",\"message\":\"Pod/p: Error\",\"release\":\"nginx:1.0\",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"kind\":\"LBLKIND\",\"namespace\":\"LBLNS\",\"reason\":\"LABEL\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}"
+  ],
+  "err": null
+ },
+ {
+  "kind": "podseq",
+  "in": [
+   {
+    "meta": {
+     "name": "p",
+     "namespace": "ns",
+     "uid": "u",
+     "cluster_name": "c1",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   },
+   {
+    "meta": {
+     "name": "p",
+     "namespace": "ns",
+     "uid": "u",
+     "cluster_name": "c1",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Error",
+      "message": "",
+      "finished_ago_ms": 500,
+      "init": false
+     }
+    ]
+   }
+  ],
+  "out": [
+   null,
+   "{\"environment\":\"ns\",\"extra\":{\"exit-code\":\"1\",\"restartCount\":0},\"fingerprint\":[\"Error\",\"Error\",\"ns\",\"u\"],\"level\":\"error\",\"message\":\"Pod/p: Error\",\"release\":\"nginx:1.0\",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"cluster\":\"c1\",\"kind\":\"Pod\",\"namespace\":\"ns\",\"reason\":\"Error\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}"
+  ],
+  "err": null
+ },
+ {
+  "kind": "podseq",
+  "in": [
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Er\tror",
+      "message": "héllo → <b>&",
+      "finished_ago_ms": 1000,
+      "init": false
+     }
+    ]
+   },
+   {
+    "meta": {
+     "name": "web-1",
+     "namespace": "default",
+     "uid": "pod-uid",
+     "cluster_name": "",
+     "labels": null,
+     "owners": [],
+     "created": ""
+    },
+    "kind": "Pod",
+    "phase": "Running",
+    "status_message": "",
+    "status_reason": "",
+    "node_name": "node-1",
+    "containers": [
+     {
+      "name": "web",
+      "image": "nginx:1.0",
+      "restart_count": 0,
+      "terminated": true,
+      "exit_code": 1,
+      "reason": "Er\tror",
+      "message": "héllo → <b>&",
+      "finished_ago_ms": 500,
+      "init": false
+     }
+    ]
+   }
+  ],
+  "out": [
+   null,
+   "{\"environment\":\"default\",\"extra\":{\"exit-code\":\"1\",\"restartCount\":0},\"fingerprint\":[\"Er\\tror\",\"héllo → \\u003cb\\u003e\\u0026\",\"default\",\"pod-uid\"],\"level\":\"error\",\"message\":\"Pod/web-1: héllo → \\u003cb\\u003e\\u0026\",\"release\":\"nginx:1.0\",\"sdk\":{},\"server_name\":\"node-1\",\"tags\":{\"kind\":\"Pod\",\"namespace\":\"default\",\"reason\":\"Er\\tror\"},\"user\":{},\"logger\":\"kubernetes\",\"timestamp\":\"<T>\"}"
+  ],
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "m",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"message\":\"m\",\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "m",
+   "level": "error",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"level\":\"error\",\"message\":\"m\",\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "m",
+   "level": "warning",
+   "logger": "kubernetes",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"level\":\"warning\",\"message\":\"m\",\"sdk\":{},\"user\":{},\"logger\":\"kubernetes\"}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "prod",
+   "server_name": "node-1",
+   "release": "img:1",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"environment\":\"prod\",\"release\":\"img:1\",\"sdk\":{},\"server_name\":\"node-1\",\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": [
+    "a",
+    "b"
+   ],
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"fingerprint\":[\"a\",\"b\"],\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": [],
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": [
+    ""
+   ],
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"fingerprint\":[\"\"],\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": {
+    "reason": "OOMKilled"
+   },
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"sdk\":{},\"tags\":{\"reason\":\"OOMKilled\"},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": {
+    "a": "1",
+    "b": "2",
+    "c": "3"
+   },
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"sdk\":{},\"tags\":{\"a\":\"1\",\"b\":\"2\",\"c\":\"3\"},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": {
+    "exit-code": "137"
+   },
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"extra\":{\"exit-code\":\"137\"},\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": {
+    "restartCount": 3
+   },
+   "timestamp": ""
+  },
+  "out": "{\"extra\":{\"restartCount\":3},\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": {
+    "x": "1"
+   },
+   "extra_int": {
+    "y": 2
+   },
+   "timestamp": ""
+  },
+  "out": "{\"extra\":{\"x\":\"1\",\"y\":2},\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": "2020-10-05T11:39:18.123456789Z"
+  },
+  "out": "{\"sdk\":{},\"user\":{},\"timestamp\":\"2020-10-05T11:39:18.123456789Z\"}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": "2020-10-05T11:39:18Z"
+  },
+  "out": "{\"sdk\":{},\"user\":{},\"timestamp\":\"2020-10-05T11:39:18Z\"}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": "2020-10-05T13:39:18+02:00"
+  },
+  "out": "{\"sdk\":{},\"user\":{},\"timestamp\":\"2020-10-05T11:39:18Z\"}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": "0001-01-01T00:00:00Z"
+  },
+  "out": "{\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": "0001-01-01T00:00:00.000000001Z"
+  },
+  "out": "{\"sdk\":{},\"user\":{},\"timestamp\":\"0001-01-01T00:00:00.000000001Z\"}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": "0001-01-01T00:00:00-01:00"
+  },
+  "out": "{\"sdk\":{},\"user\":{},\"timestamp\":\"0001-01-01T01:00:00Z\"}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": "0001-01-01T01:00:00+01:00"
+  },
+  "out": "{\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": "0001-01-01T00:00:00.000001Z"
+  },
+  "out": "{\"sdk\":{},\"user\":{},\"timestamp\":\"0001-01-01T00:00:00.000001Z\"}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "quoted \"x\" <html> & amp",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"message\":\"quoted \\\"x\\\" \\u003chtml\\u003e \\u0026 amp\",\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "héllo → 日本語",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"message\":\"héllo → 日本語\",\"sdk\":{},\"user\":{}}",
+  "err": null
+ },
+ {
+  "kind": "sentryjson",
+  "in": {
+   "message": "new\nline\ttab",
+   "level": "",
+   "logger": "",
+   "environment": "",
+   "server_name": "",
+   "release": "",
+   "fingerprint": null,
+   "tags": null,
+   "extra_str": null,
+   "extra_int": null,
+   "timestamp": ""
+  },
+  "out": "{\"message\":\"new\\nline\\ttab\",\"sdk\":{},\"user\":{}}",
+  "err": null
+ }
+]

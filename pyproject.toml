@@ -1,0 +1,54 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "k8ssentry"
+version = "0.1.0"
+description = "Report Kubernetes pod and event failures to Sentry - a 1:1 port of github.com/wichert/k8s-sentry"
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "Apache-2.0" }
+keywords = ["kubernetes", "sentry", "monitoring", "events"]
+# Zero runtime dependencies. The Go module needs client-go, apimachinery,
+# sentry-go and golang-lru; the transformation under test models or ports what
+# it needs, and the cluster/Sentry clients are optional extras used only by the
+# I/O adapter. See verification/SCOPE.md.
+dependencies = []
+
+[project.optional-dependencies]
+cluster = ["kubernetes>=10.0", "sentry-sdk>=1.0"]
+dev = ["pytest>=7.0", "pytest-cov>=4.0", "ruff>=0.4", "mypy>=1.8", "coverage>=7.0"]
+
+[project.scripts]
+k8s-sentry = "k8ssentry.main:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/k8ssentry"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py39"
+
+[tool.ruff.lint]
+# "UP" (pyupgrade) is excluded: it rewrites typing.List -> list and
+# Optional[X] -> X | None, which do not work at runtime on the 3.9 floor.
+# "N" (pep8-naming) is excluded: the port deliberately keeps Go's names
+# (handlePodUpdate, fingerprintFromMeta, NewEventHandler) so the surface maps 1:1.
+select = ["E", "F", "W", "I", "B"]
+ignore = ["E741"]
+
+[tool.mypy]
+python_version = "3.9"
+strict = true
+files = ["src/k8ssentry"]
+
+# The cluster/Sentry clients are optional extras and ship no stubs; only the
+# I/O adapter imports them, and it does so lazily.
+[[tool.mypy.overrides]]
+module = ["sentry_sdk.*", "kubernetes.*"]
+ignore_missing_imports = true

@@ -1,0 +1,405 @@
+// Go side of the truth tables.
+//
+// Lives in package main so it can reach the unexported surface (skipEvent,
+// getSentryLevel, inCluster, fingerprintFromMeta, the handlers and the event
+// construction in handlePodUpdate / handleEventAdd).
+// gen-go-truth.sh copies this into a throwaway copy of the Go checkout as
+// probe_test.go, runs it, removes it, and fails if `git status` changes.
+
+package main
+
+import (
+	"encoding/json"
+	"os"
+	"regexp"
+	"testing"
+	"time"
+
+	"github.com/getsentry/sentry-go"
+	lru "github.com/hashicorp/golang-lru"
+	v1 "k8s.io/api/core/v1"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
+	"k8s.io/apimachinery/pkg/types"
+)
+
+type probeCase struct {
+	Kind string `json:"kind"`
+	In   interface{} `json:"in"`
+	Out  interface{} `json:"out"`
+	Err  interface{} `json:"err"`
+}
+
+// captured receives the event the handlers hand to sentry.CaptureEvent.
+var captured *sentry.Event
+
+// The SDK stamps Timestamp at capture time on the pod path, so it is blanked.
+var reTimestamp = regexp.MustCompile(`"timestamp":"[^"]*"`)
+
+func initSentry(t *testing.T) {
+	// Integrations are disabled so the recorded event is what k8s-sentry
+	// CONSTRUCTS, not what the SDK enriches it with. ContextifyFrames,
+	// Environment and Modules otherwise inject this machine's arch, CPU count,
+	// hostname and the entire Go module list -- none of which the code under
+	// migration computes, and none of which is meaningful in Python.
+	err := sentry.Init(sentry.ClientOptions{
+		Dsn: "",
+		// Pins the hostname the SDK substitutes when the code leaves ServerName
+		// empty, so "the SDK filled it in" stays distinguishable from "the code
+		// set it to pod.Spec.NodeName" without depending on this machine.
+		ServerName: "probe-host",
+		Integrations: func([]sentry.Integration) []sentry.Integration {
+			return []sentry.Integration{}
+		},
+		BeforeSend: func(e *sentry.Event, _ *sentry.EventHint) *sentry.Event {
+			captured = e
+			return nil // never leaves the process
+		},
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+}
+
+type ownerSpec struct {
+	APIVersion string `json:"api_version"`
+	Kind       string `json:"kind"`
+	Name       string `json:"name"`
+	Controller *bool  `json:"controller"`
+}
+
+type metaSpec struct {
+	Name        string            `json:"name"`
+	Namespace   string            `json:"namespace"`
+	UID         string            `json:"uid"`
+	ClusterName string            `json:"cluster_name"`
+	Labels      map[string]string `json:"labels"`
+	Owners      []ownerSpec       `json:"owners"`
+	Created     string            `json:"created"`
+}
+
+func buildMeta(m metaSpec) metav1.ObjectMeta {
+	meta := metav1.ObjectMeta{
+		Name:        m.Name,
+		Namespace:   m.Namespace,
+		UID:         types.UID(m.UID),
+		ClusterName: m.ClusterName,
+		Labels:      m.Labels,
+	}
+	if m.Created != "" {
+		if ts, err := time.Parse(time.RFC3339Nano, m.Created); err == nil {
+			meta.CreationTimestamp = metav1.NewTime(ts)
+		}
+	}
+	for _, o := range m.Owners {
+		meta.OwnerReferences = append(meta.OwnerReferences, metav1.OwnerReference{
+			APIVersion: o.APIVersion,
+			Kind:       o.Kind,
+			Name:       o.Name,
+			Controller: o.Controller,
+		})
+	}
+	return meta
+}
+
+type objRefSpec struct {
+	APIVersion      string `json:"api_version"`
+	Kind            string `json:"kind"`
+	Namespace       string `json:"namespace"`
+	Name            string `json:"name"`
+	FieldPath       string `json:"field_path"`
+	ResourceVersion string `json:"resource_version"`
+}
+
+type eventSpec struct {
+	Meta           metaSpec   `json:"meta"`
+	Type           string     `json:"type"`
+	Reason         string     `json:"reason"`
+	Message        string     `json:"message"`
+	Action         string     `json:"action"`
+	Count          int32      `json:"count"`
+	Component      string     `json:"component"`
+	ClusterName    string     `json:"cluster_name"`
+	InvolvedObject objRefSpec `json:"involved_object"`
+}
+
+func buildEvent(s eventSpec) *v1.Event {
+	meta := buildMeta(s.Meta)
+	if s.ClusterName != "" {
+		meta.ClusterName = s.ClusterName
+	}
+	return &v1.Event{
+		ObjectMeta: meta,
+		Type:       s.Type,
+		Reason:     s.Reason,
+		Message:    s.Message,
+		Action:     s.Action,
+		Count:      s.Count,
+		Source:     v1.EventSource{Component: s.Component},
+		InvolvedObject: v1.ObjectReference{
+			APIVersion:      s.InvolvedObject.APIVersion,
+			Kind:            s.InvolvedObject.Kind,
+			Namespace:       s.InvolvedObject.Namespace,
+			Name:            s.InvolvedObject.Name,
+			FieldPath:       s.InvolvedObject.FieldPath,
+			ResourceVersion: s.InvolvedObject.ResourceVersion,
+		},
+	}
+}
+
+type containerSpec struct {
+	Name         string `json:"name"`
+	Image        string `json:"image"`
+	RestartCount int32  `json:"restart_count"`
+	Terminated   bool   `json:"terminated"`
+	ExitCode     int32  `json:"exit_code"`
+	Reason       string `json:"reason"`
+	Message      string `json:"message"`
+	FinishedAgo  int    `json:"finished_ago_ms"`
+	Init         bool   `json:"init"`
+}
+
+type podSpec struct {
+	Meta       metaSpec        `json:"meta"`
+	Kind       string          `json:"kind"`
+	Phase      string          `json:"phase"`
+	StatusMsg  string          `json:"status_message"`
+	Reason     string          `json:"status_reason"`
+	NodeName   string          `json:"node_name"`
+	Containers []containerSpec `json:"containers"`
+}
+
+// Terminations are pinned relative to a fixed future point so that the 5ms age
+// gate resolves the same way on both sides regardless of clock skew.
+var base = time.Now().Add(1 * time.Hour)
+
+func buildPod(s podSpec) *v1.Pod {
+	pod := &v1.Pod{
+		ObjectMeta: buildMeta(s.Meta),
+		Spec:       v1.PodSpec{NodeName: s.NodeName},
+		Status: v1.PodStatus{
+			Phase:   v1.PodPhase(s.Phase),
+			Message: s.StatusMsg,
+			Reason:  s.Reason,
+		},
+	}
+	pod.Kind = s.Kind
+	for _, c := range s.Containers {
+		st := v1.ContainerStatus{
+			Name:         c.Name,
+			Image:        c.Image,
+			RestartCount: c.RestartCount,
+		}
+		if c.Terminated {
+			st.LastTerminationState.Terminated = &v1.ContainerStateTerminated{
+				ExitCode:   c.ExitCode,
+				Reason:     c.Reason,
+				Message:    c.Message,
+				FinishedAt: metav1.NewTime(base.Add(-time.Duration(c.FinishedAgo) * time.Millisecond)),
+			}
+		}
+		if c.Init {
+			pod.Status.InitContainerStatuses = append(pod.Status.InitContainerStatuses, st)
+		} else {
+			pod.Status.ContainerStatuses = append(pod.Status.ContainerStatuses, st)
+		}
+	}
+	return pod
+}
+
+// marshalCaptured renders the captured event, blanking the fields that are
+// generated per-process (event_id) or wall-clock (timestamp on the pod path).
+func marshalCaptured() interface{} {
+	if captured == nil {
+		return nil
+	}
+	captured.EventID = ""
+	// Pure SDK identity, not output of the code under migration.
+	captured.Platform = ""
+	captured.Sdk = sentry.SdkInfo{}
+	b, err := json.Marshal(captured)
+	if err != nil {
+		return "MARSHAL ERROR: " + err.Error()
+	}
+	return string(b)
+}
+
+func TestGoTruthProbe(t *testing.T) {
+	inPath := os.Getenv("K8SSENTRY_TRUTH_IN")
+	outPath := os.Getenv("K8SSENTRY_TRUTH_OUT")
+	if inPath == "" || outPath == "" {
+		t.Skip("truth probe not requested")
+	}
+	raw, err := os.ReadFile(inPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	var in struct {
+		EventTypes []string     `json:"event_types"`
+		EnvPairs   [][]string   `json:"env_pairs"`
+		Metas      []metaSpec   `json:"metas"`
+		Events     []eventSpec  `json:"events"`
+		Pods       []podSpec    `json:"pods"`
+		SentryRaw  []sentrySpec `json:"sentry_raw"`
+		PodSeqs    [][]podSpec  `json:"pod_seqs"`
+	}
+	if err := json.Unmarshal(raw, &in); err != nil {
+		t.Fatal(err)
+	}
+	initSentry(t)
+
+	cases := []probeCase{}
+
+	for _, ty := range in.EventTypes {
+		evt := &v1.Event{Type: ty}
+		cases = append(cases, probeCase{
+			"eventtype", ty,
+			[]interface{}{skipEvent(evt), string(getSentryLevel(evt))},
+			nil,
+		})
+	}
+
+	for _, pair := range in.EnvPairs {
+		os.Unsetenv("KUBERNETES_SERVICE_HOST")
+		os.Unsetenv("KUBERNETES_SERVICE_PORT")
+		if pair[0] != "" {
+			os.Setenv("KUBERNETES_SERVICE_HOST", pair[0])
+		}
+		if pair[1] != "" {
+			os.Setenv("KUBERNETES_SERVICE_PORT", pair[1])
+		}
+		cases = append(cases, probeCase{"incluster", pair, inCluster(), nil})
+	}
+	os.Unsetenv("KUBERNETES_SERVICE_HOST")
+	os.Unsetenv("KUBERNETES_SERVICE_PORT")
+
+	for _, m := range in.Metas {
+		meta := buildMeta(m)
+		cases = append(cases, probeCase{"fingerprintmeta", m, fingerprintFromMeta(&meta), nil})
+	}
+
+	for _, s := range in.Events {
+		evt := buildEvent(s)
+		h := DefaultEventHandler{Event: evt}
+		cases = append(cases, probeCase{
+			"defaulthandler", s,
+			[]interface{}{h.Fingerprint(), h.Tags()},
+			nil,
+		})
+
+		// The full event path: only reachable without a cluster when the
+		// involved object is NOT a Pod, since NewPodEventHandler calls the API.
+		if !(s.InvolvedObject.APIVersion == "v1" && s.InvolvedObject.Kind == "Pod") {
+			captured = nil
+			app := application{defaultEnvironment: s.Meta.ClusterName}
+			app.handleEventAdd(evt)
+			sentry.Flush(2 * time.Second)
+			out := marshalCaptured()
+			// A zero INSTANT (not just an empty string) leaves Timestamp zero,
+			// and the SDK then stamps time.Now() at capture.
+			if evt.ObjectMeta.CreationTimestamp.Time.IsZero() {
+				// A zero CreationTimestamp leaves Event.Timestamp zero, and the
+				// SDK then stamps it with time.Now() at capture. Blank only that
+				// case so the recorded value stays verifiable everywhere else.
+				if str, ok := out.(string); ok {
+					out = reTimestamp.ReplaceAllString(str, `"timestamp":"<T>"`)
+				}
+			}
+			cases = append(cases, probeCase{"eventadd", s, out, nil})
+		}
+	}
+
+	for _, s := range in.Pods {
+		pod := buildPod(s)
+		h := PodEventHandler{Pod: pod}
+		cases = append(cases, probeCase{
+			"podhandler", s,
+			[]interface{}{h.Fingerprint(), h.Tags()},
+			nil,
+		})
+
+		captured = nil
+		cache, _ := lru.New(500)
+		app := &application{terminationsSeen: cache, defaultEnvironment: ""}
+		app.handlePodUpdate(nil, pod)
+		sentry.Flush(2 * time.Second)
+		out := marshalCaptured()
+		if str, ok := out.(string); ok {
+			// The pod path stamps Timestamp from the SDK at capture time.
+			out = reTimestamp.ReplaceAllString(str, `"timestamp":"<T>"`)
+		}
+		cases = append(cases, probeCase{"podupdate", s, out, nil})
+	}
+
+	// Pod sequences sharing ONE cache: the only way to reach the
+	// terminated-container branch, since isNewTermination is false on first
+	// sighting. FinishedAt is in the future so the 5ms gate is deterministic.
+	for _, seq := range in.PodSeqs {
+		cache, _ := lru.New(500)
+		app := &application{terminationsSeen: cache, defaultEnvironment: ""}
+		outs := []interface{}{}
+		for _, ps := range seq {
+			captured = nil
+			app.handlePodUpdate(nil, buildPod(ps))
+			sentry.Flush(2 * time.Second)
+			o := marshalCaptured()
+			if str, ok := o.(string); ok {
+				o = reTimestamp.ReplaceAllString(str, `"timestamp":"<T>"`)
+			}
+			outs = append(outs, o)
+		}
+		cases = append(cases, probeCase{"podseq", seq, outs, nil})
+	}
+
+	for _, s := range in.SentryRaw {
+		captured = nil
+		e := sentry.NewEvent()
+		e.Message = s.Message
+		e.Level = sentry.Level(s.Level)
+		e.Logger = s.Logger
+		e.Environment = s.Environment
+		e.ServerName = s.ServerName
+		e.Release = s.Release
+		e.Fingerprint = s.Fingerprint
+		for k, v := range s.Tags {
+			e.Tags[k] = v
+		}
+		for k, v := range s.ExtraStr {
+			e.Extra[k] = v
+		}
+		for k, v := range s.ExtraInt {
+			e.Extra[k] = v
+		}
+		if s.Timestamp != "" {
+			ts, _ := time.Parse(time.RFC3339Nano, s.Timestamp)
+			e.Timestamp = ts
+		}
+		b, _ := json.Marshal(e)
+		cases = append(cases, probeCase{"sentryjson", s, string(b), nil})
+	}
+
+	f, err := os.Create(outPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	defer f.Close()
+	enc := json.NewEncoder(f)
+	enc.SetEscapeHTML(false)
+	enc.SetIndent("", " ")
+	if err := enc.Encode(cases); err != nil {
+		t.Fatal(err)
+	}
+}
+
+type sentrySpec struct {
+	Message     string            `json:"message"`
+	Level       string            `json:"level"`
+	Logger      string            `json:"logger"`
+	Environment string            `json:"environment"`
+	ServerName  string            `json:"server_name"`
+	Release     string            `json:"release"`
+	Fingerprint []string          `json:"fingerprint"`
+	Tags        map[string]string `json:"tags"`
+	ExtraStr    map[string]string `json:"extra_str"`
+	ExtraInt    map[string]int32  `json:"extra_int"`
+	Timestamp   string            `json:"timestamp"`
+}
